@@ -21,6 +21,8 @@ const particlesOptions = {
 	}
 }
 
+const serverUrl = 'https://evening-forest-84491.herokuapp.com';
+
 class App extends Component {
 	constructor() {
 		super();
@@ -72,7 +74,7 @@ class App extends Component {
 		//e.g. https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
 		//This one works though:
 		// https://media.glamour.com/photos/5a425fd3b6bcee68da9f86f8/master/w_743,c_limit/best-face-oil.png
-		fetch('http://localhost:3000/imageurl', {
+		fetch(serverUrl + '/imageurl', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -85,7 +87,7 @@ class App extends Component {
 
 			if (clarifaiResponse) {
 				console.log(this.state.user.id);
-				fetch('http://localhost:3000/image', {
+				fetch(serverUrl + '/image', {
 					method: 'put',
 					headers: {'Content-Type': 'application/json'},
 					body: JSON.stringify({
@@ -124,11 +126,12 @@ class App extends Component {
 		{
 			case 'signin':
 				pageContents = <SignIn
+					serverUrl={serverUrl}
 					onSignIn={this.onSignIn}
 					onRouteChange={this.onRouteChange} />;
 				break;
 			case 'register':
-				pageContents = <Register onSignIn={this.onSignIn} onRouteChange={this.onRouteChange}/>;
+				pageContents = <Register serverUrl={serverUrl} onSignIn={this.onSignIn} onRouteChange={this.onRouteChange}/>;
 				break;
 			case 'home':
 			default:

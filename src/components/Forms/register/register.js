@@ -11,6 +11,7 @@ class Register extends React.Component {
 			name: '',
 			registrationFailure: false
 		}
+		this.serverUrl = props.serverUrl;
 	}
 
 	onEmailChange = (event) => {
@@ -41,7 +42,7 @@ class Register extends React.Component {
 		this.setState({registrationFailure: !regInfoIsValid});
 
 		if (regInfoIsValid) {
-			fetch('http://localhost:3000/register', {
+			fetch(this.serverUrl + '/register', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify({

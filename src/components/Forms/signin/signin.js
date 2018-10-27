@@ -11,6 +11,8 @@ class SignIn extends React.Component {
 			signInPassword: '',
 			signInFailed: false
 		}
+
+		this.serverUrl = props.serverUrl;
 	}
 
 	clearInputFields = (event) => {
@@ -29,7 +31,7 @@ class SignIn extends React.Component {
 	}
 
 	onSubmitSignIn = () => {
-		fetch('http://localhost:3000/signin', {
+		fetch(this.serverUrl + '/signin', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
