@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "clarifai": "^2.9.0",
-    "npm": "^6.4.1",
+    "npm": "^11.9.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-particles-js": "^2.3.0",
